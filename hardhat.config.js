@@ -1,12 +1,16 @@
 require("@nomiclabs/hardhat-waffle");
 require("./tasks/faucet");
+require('dotenv').config();
+
 /**
  * @type import('hardhat/config').HardhatUserConfig
  */
 
-const INFURA_KEY = 'SOME_INFURA_KEY';
+const INFURA_KEY = process.env.INFURA_KEY;
 
-const KOVAN_PRIVATE_KEY = 'SOME_PRIVATE_KEY';
+const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY;
+
+console.log(INFURA_KEY + " " + KOVAN_PRIVATE_KEY);
 
 module.exports = {
   solidity: "0.7.3",

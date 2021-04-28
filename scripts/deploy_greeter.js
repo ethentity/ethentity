@@ -1,4 +1,4 @@
-async function main() {
+  async function main() {
 
     const [deployer] = await ethers.getSigners();
   
