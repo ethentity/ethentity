@@ -10,8 +10,6 @@ const INFURA_KEY = process.env.INFURA_KEY;
 
 const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY;
 
-console.log(INFURA_KEY + " " + KOVAN_PRIVATE_KEY);
-
 module.exports = {
   solidity: "0.7.3",
   networks: {

@@ -52,3 +52,37 @@
 #greet_btn:active {
   background-color: gray;
 }
+
+#setL2_btn {
+  color: white;
+  background-color: #282c34;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  top: 200px;
+  left: 340px;
+  font-size: large;
+}
+
+#setL2_btn:active {
+  background-color: gray;
+}
+
+#setL1_btn {
+  color: white;
+  background-color: #282c34;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  position: absolute;
+  top: 200px;
+  left: 640px;
+  font-size: large;
+}
+
+#setL1_btn:active {
+  background-color: gray;
+}

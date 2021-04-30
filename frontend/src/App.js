@@ -1,6 +1,10 @@
 import './App.css';
 import Button from './components/Button';
 import Web3 from 'web3';
+import SetL2Button from './components/SetL2Button';
+import L2GreetButton from './components/L2GreetButton';
+import SetL1Button from './components/SetL1Button';
+import L1GreetButton from './components/L1GreetButton';
 
 function App() {
 
@@ -20,6 +24,10 @@ function App() {
        Ethentity
       </header>
       <Button/>
+      <SetL2Button/>
+      <SetL1Button/>
+      <L2GreetButton/>
+      <L1GreetButton/>
     </div>
   );
 }
