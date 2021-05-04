@@ -20,21 +20,36 @@ describe("Ethentity core contract", () => {
         beforeEach(deployContract);
 
         it("Should not allow multiple registrations for the same address", async () => {
-            const connection = hardhatEthentity.connect(addr1);
+            const connection = await hardhatEthentity.connect(addr1);
             console.log("Registering");
-            await expect(await connection.register()).to.exist;
+            await expect(connection.register()).to.exist;
             console.log("Registering again");
-            await expect(await connection.register()).to.be.revertedWith("Address already registered.");
+            await expect(connection.register()).to.be.revertedWith("Address already registered.");
         })
     })
 
-    // describe("Member", async () => {
-    //     const connection = await hardhatEthentity.connect(addr1);
-    //
-    //     const member = await connection.register();
-    //
-    //     it("Should allow members to change their name", async () => {
-    //         await expect(member.changeName("John Doe")).to.not.throw;
-    //     })
-    // })
+    describe("Member", async () => {
+        let memberContract;
+        let connection;
+        let memberConnection;
+
+        beforeEach(async () => {
+            await deployContract();
+
+            connection = await hardhatEthentity.connect(addr1);
+
+            const tx = await connection.register();
+
+            const receipt = await tx.wait();
+
+            const memberAddress = receipt.events.pop().args[0];
+
+            memberContract = await ethers.getContractAt("Member", memberAddress);
+            memberConnection = await memberContract.connect(addr1);
+        });
+
+        it("Should allow members to change their name", async () => {
+            await expect(memberConnection.changeName("John Doe")).to.not.be.reverted;
+        })
+    })
 })
