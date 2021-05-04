@@ -20,6 +20,11 @@ contract Member {
         name = newName;
     }
 
+    function initiateVerification(string memory startVerification) public onlyMember notVerified {
+        // Deploy new verification contract
+        verificationContract = new VerificationContract(this);
+    }
+
     modifier onlyMember {
         require(
             msg.sender == memberAddress,
