@@ -11,7 +11,16 @@ const INFURA_KEY = process.env.INFURA_KEY;
 const KOVAN_PRIVATE_KEY = process.env.KOVAN_PRIVATE_KEY;
 
 module.exports = {
-  solidity: "0.7.3",
+  solidity: {
+    compilers: [
+      {
+        version: "0.7.3"
+      },
+      {
+        version: "0.7.6"
+      }
+    ]
+  },
   networks: {
     kovan: {
       url: `https://kovan.infura.io/v3/${INFURA_KEY}`,
