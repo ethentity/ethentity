@@ -16,7 +16,7 @@ contract VerificationContract {
         validatorsPerChunk = _validatorsPerChunk;
 
         for (uint i = 0; i < numChunks; i++) {
-            chunks.push(new Chunk());
+            chunks.push(new Chunk(10));
         }
     }
 }

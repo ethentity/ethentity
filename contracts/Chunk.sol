@@ -22,9 +22,11 @@ contract Chunk {
         maxNumValidators = _maxNumValidators;
     }
 
+    /*
     function joinValidators() {
 
     }
+    */
 
     modifier notFinished {
         require(

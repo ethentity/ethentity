@@ -22,7 +22,7 @@ contract Member {
 
     function initiateVerification(string memory startVerification) public onlyMember notVerified {
         // Deploy new verification contract
-        verificationContract = new VerificationContract(this);
+        verificationContract = new VerificationContract(this, 3, 10);
     }
 
     modifier onlyMember {

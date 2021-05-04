@@ -1,4 +1,4 @@
-pragma solidity ^0.7.3;
+pragma solidity ^0.7.6;
 
 contract Verification{
     bool passportNumberVerified;
@@ -28,7 +28,7 @@ contract Verification{
             photoVerified = false;
         }
 
-        if((nameApprovals - nameVerified) == 10){
+        if((nameApprovals - nameRejections) == 10){
             nameVerified = true;
         }
         else{
@@ -52,7 +52,7 @@ contract Verification{
         uint8 nameRejections = 0;
     }
 
-    function incPassportNumberVerified(bool memory _passportNumberVerified) public {
+    function incPassportNumberVerified(bool _passportNumberVerified) public {
         passportNumberVerified = _passportNumberVerified;
         if(passportNumberVerified){
             passportNumberApprovals++;
@@ -62,8 +62,8 @@ contract Verification{
         }
     }
 
-    function incPictureVerified(bool memory _photoVerified) public {
-        photoVerified = _pictureVerified;
+    function incPictureVerified(bool _photoVerified) public {
+        photoVerified = _photoVerified;
         if(photoVerified){
             photoApprovals++;
         }
@@ -72,7 +72,7 @@ contract Verification{
         }
     }
 
-    function incNameVerified(bool memory _nameVerified) public {
+    function incNameVerified(bool _nameVerified) public {
         nameVerified = _nameVerified;
         if(nameVerified){
             nameApprovals++;
