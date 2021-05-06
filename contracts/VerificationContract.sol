@@ -9,7 +9,7 @@ contract VerificationContract {
     uint private numChunks;
     uint private validatorsPerChunk;
     Chunk[] private chunks;
-
+    mapping(Member => uint) stakes;
     constructor(Member _prover, uint _numChunks, uint _validatorsPerChunk) {
         prover = _prover;
         numChunks = _numChunks;
