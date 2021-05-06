@@ -16,11 +16,15 @@ contract Ethentity {
             "Address already registered."
         );
 
-        Member newMember = new Member(msg.sender);
+        Member newMember = new Member(this, msg.sender);
         members[msg.sender] = newMember;
 
         emit Register(newMember);
 
         return newMember;
+    }
+
+    function getMemberFromAddress(address addr) public view returns(Member) {
+        return members[addr];
     }
 }

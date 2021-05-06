@@ -18,15 +18,37 @@ contract Chunk {
     uint maxNumValidators;
     uint currentNumValidators;
 
-    constructor(uint _maxNumValidators) {
-        maxNumValidators = _maxNumValidators;
+    constructor(uint _maxNumVerifiers) {
+        maxNumValidators = _maxNumVerifiers;
     }
 
-    /*
-    function joinValidators() {
+    function joinValidators() public {
+        // Make sure the sender is registered as a validator
+        bool isRegisteredAsEthentityVerifier = false;
 
+        Member member = verificationContract.ethentity().getMemberFromAddress(msg.sender);
+        if (address(member) != address(0)) {
+            // The member exists, check that they are a validator
+            if (member.isValidator()) {
+                isRegisteredAsEthentityVerifier = true;
+            }
+        }
+
+        require(
+            isRegisteredAsEthentityVerifier,
+            "You must be registered as an Ethentity validator to join this verification."
+        );
+
+        // Allow a verifier to join the list of verifiers
+        bool isAlreadyVerifier = verificationContract.isMemberAlreadyVerifier(member);
+
+        require(
+            !isAlreadyVerifier,
+            "You can not become a validator multiple times for the same validation contract."
+        );
+
+        // TODO: ALl clear, add the member as a validator
     }
-    */
 
     modifier notFinished {
         require(
