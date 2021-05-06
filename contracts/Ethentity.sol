@@ -16,7 +16,8 @@ contract Ethentity {
             "Address already registered."
         );
 
-        Member newMember = new Member(msg.sender, _firstName, _lastName, _country, _passportNumber);
+        Member newMember = new Member(this, msg.sender);
+
         members[msg.sender] = newMember;
 
         emit Register(newMember);
@@ -24,12 +25,9 @@ contract Ethentity {
         return newMember;
     }
 
-    function isMember(address _memberAddress) public view returns(bool){
-        if(members[_memberAddress]){
-            return true;
-        }
-        else{
-            return false;
-        }
+
+    function getMemberFromAddress(address addr) public view returns(Member) {
+        return members[addr];
     }
+
 }

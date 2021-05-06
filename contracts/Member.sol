@@ -4,16 +4,23 @@ pragma solidity ^0.7.6;
 import "./VerificationContract.sol";
 
 contract Member {
-    address private memberAddress;
-    string private firstName;
-    string private lastName;
+
+    Ethentity public ethentity;
+    address public memberAddress;
+    string private name;
+
     string private country;
     uint private passportNumber;
     string private physicalAddress;
-    bool private isVerified;
+
+    bool private isVerified = false;
+    bool private verificationStarted = false;
+    bool public isValidator = false;
     VerificationContract private verificationContract;
 
-    constructor(address _memberAddress, string _firstName, string _lastName, string _country, uint _passportNumber) {
+    constructor(Ethentity _ethentity, address _memberAddress) {
+        ethentity = _ethentity;
+
         memberAddress = _memberAddress;
         firstName = _firstName;
         lastName = _lastName;
@@ -22,19 +29,38 @@ contract Member {
         isVerified = false;
     }
 
-    function isVerified() public view returns(bool){
-        return isVerified;
-    }
+    function changeName(string calldata newName) public onlyMember notVerified verificationNotInProgress {
 
-    
-
-    function changeName(string memory newName) public onlyMember notVerified {
         name = newName;
     }
 
-    function initiateVerification(string memory startVerification) public onlyMember notVerified {
+    function changeCountry(string calldata newCountry) public onlyMember notVerified verificationNotInProgress {
+        country = newCountry;
+    }
+
+    function changePassportNumber(string calldata newPassportNumber) public onlyMember notVerified verificationNotInProgress {
+        passportNumber = newPassportNumber;
+    }
+
+    function changePhysicalAddress(string calldata newPhysicalAddress) public onlyMember notVerified verificationNotInProgress {
+        physicalAddress = newPhysicalAddress;
+    }
+
+    function initiateVerification() public onlyMember notVerified verificationNotInProgress payable {
         // Deploy new verification contract
-        verificationContract = new VerificationContract(this, 3, 10);
+        uint requiredWei = Constants.NUM_CHUNKS * Constants.VALIDATORS_PER_CHUNK * Constants.REWARD_WEI_PER_VERIFIER;
+
+        require(
+            msg.value == requiredWei,
+            "You must send exactly the right amount of WEI."
+        );
+
+        verificationStarted = true;
+
+        // Create our verification contract and lock in the ether
+        verificationContract = (
+            new VerificationContract
+        ){value: msg.value}(ethentity, this, Constants.NUM_CHUNKS, Constants.VALIDATORS_PER_CHUNK);
     }
 
     modifier onlyMember {
@@ -49,6 +75,14 @@ contract Member {
         require(
             !isVerified,
             "You can not call this function after the member has been verified."
+        );
+        _;
+    }
+
+    modifier verificationNotInProgress {
+        require(
+            !verificationStarted,
+            "You can not call this function while verification is in progress."
         );
         _;
     }
