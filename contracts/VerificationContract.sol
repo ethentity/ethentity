@@ -12,12 +12,14 @@ contract VerificationContract {
     uint private numChunks;
     uint private validatorsPerChunk;
     Chunk[] private chunks;
+
     uint private expirationBlock;
     bool private verificationInProgress;
     Member[] public verifiersInAllChunks;
 
     constructor(Ethentity _ethentity, Member _prover, uint _numChunks, uint _validatorsPerChunk) payable {
         ethentity = _ethentity;
+
         prover = _prover;
         numChunks = _numChunks;
         validatorsPerChunk = _validatorsPerChunk;

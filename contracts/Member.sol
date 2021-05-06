@@ -4,12 +4,15 @@ pragma solidity ^0.7.6;
 import "./VerificationContract.sol";
 
 contract Member {
+
     Ethentity public ethentity;
     address public memberAddress;
     string private name;
+
     string private country;
-    string private passportNumber;
+    uint private passportNumber;
     string private physicalAddress;
+
     bool private isVerified = false;
     bool private verificationStarted = false;
     bool public isValidator = false;
@@ -17,10 +20,17 @@ contract Member {
 
     constructor(Ethentity _ethentity, address _memberAddress) {
         ethentity = _ethentity;
+
         memberAddress = _memberAddress;
+        firstName = _firstName;
+        lastName = _lastName;
+        country = _country;
+        passportNumber = _passportNumber;
+        isVerified = false;
     }
 
     function changeName(string calldata newName) public onlyMember notVerified verificationNotInProgress {
+
         name = newName;
     }
 

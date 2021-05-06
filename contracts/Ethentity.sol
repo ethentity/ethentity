@@ -9,7 +9,7 @@ contract Ethentity {
 
     event Register(Member);
 
-    function register() public returns(Member) {
+    function register(string _firstName, string _lastName, string _country, uint _passportNumber) public returns(Member) {
         // Make sure this address hasn't registered yet
         require(
             address(members[msg.sender]) == address(0),
@@ -17,6 +17,7 @@ contract Ethentity {
         );
 
         Member newMember = new Member(this, msg.sender);
+
         members[msg.sender] = newMember;
 
         emit Register(newMember);
@@ -24,7 +25,9 @@ contract Ethentity {
         return newMember;
     }
 
+
     function getMemberFromAddress(address addr) public view returns(Member) {
         return members[addr];
     }
+
 }

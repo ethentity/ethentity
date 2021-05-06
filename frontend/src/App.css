@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 10vmin;
   pointer-events: none;
 }
 
@@ -14,75 +14,23 @@
 }
 
 .App-header {
-  background-color: #282c34;
+  background-color: gray;
   min-height: 10vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
-  color: white;
+  color: darkgreen;
 }
 
 .App-link {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
-#greet_btn {
-  color: white;
-  background-color: #282c34;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: absolute;
-  top: 200px;
-  font-size: large;
-}
-
-#greet_btn:active {
-  background-color: gray;
-}
-
-#setL2_btn {
-  color: white;
-  background-color: #282c34;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: absolute;
-  top: 200px;
-  left: 340px;
-  font-size: large;
-}
-
-#setL2_btn:active {
-  background-color: gray;
-}
-
-#setL1_btn {
-  color: white;
-  background-color: #282c34;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  padding-left: 10px;
-  padding-right: 10px;
-  position: absolute;
-  top: 200px;
-  left: 640px;
-  font-size: large;
-}
-
-#setL1_btn:active {
-  background-color: gray;
+#connect_btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
 }
