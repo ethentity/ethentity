@@ -36,7 +36,7 @@ const WebcamCapture = (props) => {
     item = (
       <center>
         <CanvasDraw
-          ref={(canvasDraw) => (props.saveableCanvas = canvasDraw)}
+          // ref={(canvasDraw) => (props.saveableCanvas = canvasDraw)}
           brushColor="#000000"
           canvasWidth="620px"
           canvasHeight="480px"
