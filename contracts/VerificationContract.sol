@@ -17,6 +17,8 @@ contract VerificationContract {
     bool private verificationInProgress;
     Member[] public verifiersInAllChunks;
 
+    mapping(address => uint) private stakes;
+
     constructor(Ethentity _ethentity, Member _prover, uint _numChunks, uint _validatorsPerChunk) payable {
         ethentity = _ethentity;
 
@@ -44,5 +46,22 @@ contract VerificationContract {
         }
 
         return isAlreadyVerifier;
+    }
+
+    function stake(address payable _verificationContract) public payable{
+        // sends _stakeAmount ether in wei (10^^-18 of an ether) to this contract
+        (bool sent, bytes memory data) = _verificationContract.call{value: msg.value}("");
+        require(sent, "Failed to send ether");
+        // keeps track of staker address and amount
+        stakes[msg.sender] = msg.value;
+    }
+
+    function returnStake(address payable _staker) public {
+        (bool sent, bytes memory data) = _staker.call{stakes[_staker]}("");
+        require(sent, "Failed to send ether");
+    }
+
+    function getStakeAmount(address _staker) public view returns(uint){
+        return stakes[_staker];
     }
 }
