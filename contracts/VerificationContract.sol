@@ -57,7 +57,7 @@ contract VerificationContract {
     }
 
     function returnStake(address payable _staker) public {
-        (bool sent, bytes memory data) = _staker.call{stakes[_staker]}("");
+        (bool sent, bytes memory data) = _staker.call{value: stakes[_staker]}("");
         require(sent, "Failed to send ether");
     }
 
