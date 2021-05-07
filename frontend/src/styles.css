@@ -1,0 +1,22 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+.container > * {
+  margin: 20px 0;
+}
+
+#logo {
+  border-radius: 50%;
+}
+
+[class*="primary"] {
+  background-color: #207868;
+  border-color: #207868;
+}
+
+[class*="primary"]:hover {
+  background-color: #25917d;
+  border-color: #25917d;
+}

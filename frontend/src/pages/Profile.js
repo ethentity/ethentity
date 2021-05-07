@@ -1,0 +1,53 @@
+import React from "react";
+import { FormInput, FormRadio, Button } from "shards-react";
+import { useHistory } from "react-router-dom";
+
+const Profile = () => {
+  const history = useHistory();
+
+  function goToVerification() {
+    history.push("/verification");
+  }
+
+  return (
+    <div className="container">
+      <div>
+        <FormInput placeholder="First Name" />
+      </div>
+      <div>
+        <FormInput placeholder="Last Name" />
+      </div>
+      <FormRadio
+        name="country"
+        // checked={this.state.selectedFruit === "orange"}
+        // onChange={() => {
+        // this.changeFruit("orange");
+        // }}
+      >
+        Canada
+      </FormRadio>
+      <FormRadio
+        name="country"
+        // checked={this.state.selectedFruit === "lemon"}
+        // onChange={() => {
+        // this.changeFruit("lemon");
+        // }}
+      >
+        U.S.
+      </FormRadio>
+      <div>
+        <FormInput placeholder="Passport #" />
+      </div>
+      <div>
+        <Button squared>Save</Button>
+      </div>
+      <div>
+        <Button squared onClick={goToVerification}>
+          Verify your identity
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+export default Profile;
