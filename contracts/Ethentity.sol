@@ -9,14 +9,14 @@ contract Ethentity {
 
     event Register(Member);
 
-    function register(string _firstName, string _lastName, string _country, uint _passportNumber) public returns(Member) {
+    function register(string memory _firstName, string memory _lastName, string memory _country, uint _passportNumber) public returns(Member) {
         // Make sure this address hasn't registered yet
         require(
             address(members[msg.sender]) == address(0),
             "Address already registered."
         );
 
-        Member newMember = new Member(this, msg.sender);
+        Member newMember = new Member(this, msg.sender, _firstName, _lastName, _country, _passportNumber);
 
         members[msg.sender] = newMember;
 
