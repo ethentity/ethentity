@@ -11,7 +11,7 @@ contract Member {
     string private lastName;
 
     string private country;
-    uint private passportNumber;
+    string private passportNumber;
     string private physicalAddress;
 
     bool private isVerified = false;
@@ -19,7 +19,7 @@ contract Member {
     bool public isValidator = false;
     VerificationContract private verificationContract;
 
-    constructor(Ethentity _ethentity, address _memberAddress, string memory _firstName, string memory _lastName, string memory _country, uint _passportNumber) {
+    constructor(Ethentity _ethentity, address _memberAddress, string memory _firstName, string memory _lastName, string memory _country, string memory _passportNumber) {
         ethentity = _ethentity;
 
         memberAddress = _memberAddress;
@@ -40,7 +40,7 @@ contract Member {
         country = newCountry;
     }
 
-    function changePassportNumber(uint _newPassportNumber) public onlyMember notVerified verificationNotInProgress {
+    function changePassportNumber(string calldata _newPassportNumber) public onlyMember notVerified verificationNotInProgress {
         passportNumber = _newPassportNumber;
     }
 
