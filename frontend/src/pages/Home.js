@@ -13,7 +13,7 @@ const Home = () => {
 
   return (
     <div className="container">
-      <Button squared onClick={goToProfile}>
+      <Button theme="success" squared onClick={goToProfile}>
         Connect your wallet
       </Button>
     </div>

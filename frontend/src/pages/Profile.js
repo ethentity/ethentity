@@ -44,15 +44,15 @@ const Profile = () => {
         <FormInput placeholder="Passport #" />
       </div>
       <div>
-        <Button squared>Save</Button>
+        <Button theme="success" squared>Save</Button>
       </div>
       <div>
-        <Button squared onClick={goToVerification}>
+        <Button theme="success" squared onClick={goToVerification}>
           Verify your identity
         </Button>
       </div>
       <div>
-        <Button squared onClick={goToIdentities}>
+        <Button theme="success" squared onClick={goToIdentities}>
           Check Identities
         </Button>
       </div>

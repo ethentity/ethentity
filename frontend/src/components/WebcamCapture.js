@@ -45,7 +45,7 @@ const WebcamCapture = () => {
     );
   } else {
     action_button = (
-      <Button squared onClick={capture}>
+      <Button theme="success" squared onClick={capture}>
         Take photo
       </Button>
     );
@@ -59,7 +59,7 @@ const WebcamCapture = () => {
       <div>{item}</div>
       <div>{action_button}</div>
       <div>
-        <Button squared onClick={reset}>
+        <Button theme="success" squared onClick={reset}>
           Reset
         </Button>
       </div>
