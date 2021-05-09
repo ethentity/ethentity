@@ -1,3 +1,4 @@
+import "../styles.css";
 import React from "react";
 import { FormInput, FormRadio, Button } from "shards-react";
 import { useHistory } from "react-router-dom";
@@ -7,6 +8,10 @@ const Profile = () => {
 
   function goToVerification() {
     history.push("/verification");
+  }
+
+  function goToIdentities() {
+    history.push("/identities");
   }
 
   return (
@@ -44,6 +49,11 @@ const Profile = () => {
       <div>
         <Button squared onClick={goToVerification}>
           Verify your identity
+        </Button>
+      </div>
+      <div>
+        <Button squared onClick={goToIdentities}>
+          Check Identities
         </Button>
       </div>
     </div>

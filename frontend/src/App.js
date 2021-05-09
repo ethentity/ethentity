@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Home from "./pages/Home";
 import Verification from "./pages/Verification";
 import Profile from "./pages/Profile";
+import Identities from "./pages/Identities";
 import Error from "./pages/Error";
 import logo from "./assets/ethentity-logo.png";
 import { Tooltip } from "shards-react";
@@ -42,6 +43,7 @@ class App extends Component {
             <Route path="/" component={Home} exact />
             <Route path="/verification" component={Verification} />
             <Route path="/profile" component={Profile} />
+            <Route path="/identities" component={Identities} />
             <Route component={Error} />
           </Switch>
         </div>

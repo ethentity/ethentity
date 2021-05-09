@@ -1,3 +1,4 @@
+import "../styles.css";
 import React from "react";
 import "shards-ui/dist/css/shards.min.css";
 import { Button } from "shards-react";

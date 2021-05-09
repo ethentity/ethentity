@@ -1,3 +1,4 @@
+import "../styles.css";
 import React from "react";
 import WebcamCapture from "../components/WebcamCapture";
 import { Progress } from "shards-react";

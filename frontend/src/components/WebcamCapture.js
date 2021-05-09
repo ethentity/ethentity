@@ -3,7 +3,7 @@ import Webcam from "react-webcam";
 import { Button } from "shards-react";
 import CanvasDraw from "react-canvas-draw";
 
-const WebcamCapture = (props) => {
+const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
   const [imgSrc, setImgSrc] = React.useState(null);
   let item;
@@ -23,11 +23,7 @@ const WebcamCapture = (props) => {
       <Button
         squared
         onClick={() => {
-          console.log(props);
-          // localStorage.setItem(
-          // "savedDrawing",
-          // props.saveableCanvas.getSaveData()
-          // );
+          console.log(imgSrc);
         }}
       >
         Confirm chunk #1
