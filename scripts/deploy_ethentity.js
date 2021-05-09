@@ -1,4 +1,4 @@
-  async function main() {
+async function main() {
 
     const [deployer] = await ethers.getSigners();
   
@@ -9,10 +9,10 @@
     
     console.log("Account balance:", (await deployer.getBalance()).toString());
   
-    const Greeter = await ethers.getContractFactory("Greeter");
-    const greeter = await Greeter.deploy("Hi Danny!");
+    const Ethentity = await ethers.getContractFactory("Ethentity");
+    const ethentity = await Ethentity.deploy();
   
-    console.log("Contract address:", greeter.address);
+    console.log("Contract address:", ethentity.address);
   }
   
   main()
