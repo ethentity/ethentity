@@ -1,11 +1,13 @@
 # build environment
-FROM node:16.1.0-stretch-slim as build
+FROM node:13.12.0-alpine as build
 WORKDIR /app
-ENV PATH /app/node_modules/.bin:$
+ENV PATH /app/node_modules/.bin:$PATH
 COPY frontend/package.json ./
 COPY frontend/package-lock.json ./
-RUN npm ci
-COPY frontend ./
+RUN apk add --update python make g++\
+   && rm -rf /var/cache/apk/*
+RUN npm install
+COPY frontend/ ./
 RUN npm run build
 
 # production environment
