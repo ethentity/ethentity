@@ -1,4 +1,4 @@
-  async function main() {
+async function main() {
 
     const [deployer] = await ethers.getSigners();
   
@@ -10,14 +10,9 @@
     console.log("Account balance:", (await deployer.getBalance()).toString());
   
     const Member = await ethers.getContractFactory("Member");
-    const member = await Member.deploy('0xc124B451E542C7Bbfb8ec098796a4aE3F91F8918', deployer.address, 'Danny', 'Chung', 'USA', '123456');
+    const member = await Member.deploy();
   
     console.log("Contract address:", member.address);
   }
-  
-  main()
-    .then(() => process.exit(0))
-    .catch(error => {
-      console.error(error);
-      process.exit(1);
-    });
+
+  module.exports = main;

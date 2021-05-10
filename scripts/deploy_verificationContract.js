@@ -15,9 +15,4 @@ async function main() {
   console.log("Contract address:", verificationContract.address);
 }
 
-main()
-  .then(() => process.exit(0))
-  .catch(error => {
-    console.error(error);
-    process.exit(1);
-  });
+module.exports = main;

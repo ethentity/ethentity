@@ -7,7 +7,8 @@
   },
   "scripts": {
     "test": "hardhat test",
-    "compile": "hardhat compile"
+    "compile": "hardhat compile",
+    "deploy": "hardhat compile && npx hardhat run --network arbkovan4 ./scripts/deploy.js"
   },
   "repository": {
     "type": "git",
