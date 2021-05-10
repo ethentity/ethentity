@@ -15,7 +15,7 @@ contract Member {
 
     bool private isVerified = false;
     bool private verificationStarted = false;
-    bool public isValidator = false;
+    bool public isVerifier = false;
     VerificationContract private verificationContract;
 
     constructor(Ethentity _ethentity, address _memberAddress) {
