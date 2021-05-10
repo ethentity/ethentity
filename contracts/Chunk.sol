@@ -22,7 +22,7 @@ contract Chunk {
         maxNumValidators = _maxNumVerifiers;
     }
 
-    function joinValidators() public {
+    function joinValidators() view public {
         // Make sure the sender is registered as a validator
         bool isRegisteredAsEthentityVerifier = false;
 
