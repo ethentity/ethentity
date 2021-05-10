@@ -22,14 +22,14 @@ contract Chunk {
         maxNumValidators = _maxNumVerifiers;
     }
 
-    function joinValidators() public {
+    function joinValidators() view public {
         // Make sure the sender is registered as a validator
         bool isRegisteredAsEthentityVerifier = false;
 
         Member member = verificationContract.ethentity().getMemberFromAddress(msg.sender);
         if (address(member) != address(0)) {
             // The member exists, check that they are a validator
-            if (member.isValidator()) {
+            if (member.isVerifier()) {
                 isRegisteredAsEthentityVerifier = true;
             }
         }
@@ -39,7 +39,7 @@ contract Chunk {
             "You must be registered as an Ethentity validator to join this verification."
         );
 
-        // Allow a verifier to join the list of verifiers
+        // Check that the verifier is not already part of this verification contract
         bool isAlreadyVerifier = verificationContract.isMemberAlreadyVerifier(member);
 
         require(

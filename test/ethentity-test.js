@@ -22,9 +22,9 @@ describe("Ethentity core contract", () => {
         it("Should not allow multiple registrations for the same address", async () => {
             const connection = await hardhatEthentity.connect(addr1);
             console.log("Registering");
-            await expect(connection.register('Danny', 'Chung', 'USA', 'AB123456')).to.exist;
+            await expect(connection.register("John", "Doe", "USA", "12345678")).to.exist;
             console.log("Registering again");
-            await expect(connection.register('Danny', 'Chung', 'USA', 'AB123456')).to.be.revertedWith("Address already registered.");
+            await expect(connection.register("John", "Doe", "USA", "12345678")).to.be.revertedWith("Address already registered.");
         })
     })
 
@@ -38,7 +38,7 @@ describe("Ethentity core contract", () => {
 
             connection = await hardhatEthentity.connect(addr1);
 
-            const tx = await connection.register('Danny', 'Chung', 'USA', 'AB123456');
+            const tx = await connection.register("John", "Doe", "USA", "12345678");
 
             const receipt = await tx.wait();
 

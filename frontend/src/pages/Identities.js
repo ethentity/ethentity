@@ -15,8 +15,8 @@ const Identities = () => {
   return (
     <div className="container">
       <IdentityCard
-        name="First Last"
-        reward={50}
+        name="Hamza Benhmani"
+        reward={0.01}
         progress={3}
         chunk1_status="light"
         chunk2_status="warning"

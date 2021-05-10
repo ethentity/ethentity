@@ -48,7 +48,7 @@ contract VerificationContract {
         return isAlreadyVerifier;
     }
 
-    function stake(address payable _verificationContract) public payable{
+    function stake(address payable _verificationContract) public payable {
         // sends _stakeAmount ether in wei (10^^-18 of an ether) to this contract
         (bool sent, bytes memory data) = _verificationContract.call{value: msg.value}("");
         require(sent, "Failed to send ether");
@@ -61,7 +61,7 @@ contract VerificationContract {
         require(sent, "Failed to send ether");
     }
 
-    function getStakeAmount(address _staker) public view returns(uint){
+    function getStakeAmount(address _staker) public view returns(uint) {
         return stakes[_staker];
     }
 }
