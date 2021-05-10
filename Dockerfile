@@ -9,6 +9,7 @@ RUN apk add --update python make g++\
 RUN npm install
 COPY frontend/ ./
 CMD ["npm", "start"]
+EXPOSE 3000
 # RUN npm run build
 
 # production environment
