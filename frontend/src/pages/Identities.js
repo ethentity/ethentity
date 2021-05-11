@@ -15,17 +15,44 @@ const Identities = () => {
   return (
     <div className="container">
       <IdentityCard
-        name="Hamza Benhmani"
+        name="Aaron C."
         reward={0.01}
         progress={3}
         chunk1_status="light"
         chunk2_status="warning"
         chunk3_status="success"
-        // chunks={
-        //   (((id) => 1, (status) => "new"),
-        //   ((id) => 2, (status) => "inprogress"),
-        //   ((id) => 3, (status) => "done"))
-        // }
+      />
+      <IdentityCard
+        name="Mike P."
+        reward={0.01}
+        progress={0}
+        chunk1_status="light"
+        chunk2_status="light"
+        chunk3_status="light"
+      />
+      <IdentityCard
+        name="Danny C."
+        reward={0.01}
+        progress={2}
+        chunk1_status="light"
+        chunk2_status="warning"
+        chunk3_status="warning"
+      />
+      <IdentityCard
+        name="Jeremy V."
+        reward={0.01}
+        progress={5}
+        chunk1_status="warning"
+        chunk2_status="success"
+        chunk3_status="success"
+      />
+      <IdentityCard
+        name="Hamza B."
+        reward={0.01}
+        progress={2}
+        chunk1_status="warning"
+        chunk2_status="light"
+        chunk3_status="light"
       />
     </div>
   );
