@@ -22,6 +22,7 @@ const WebcamCapture = () => {
     action_button = (
       <Button
         squared
+        theme="success"
         onClick={() => {
           console.log(imgSrc);
         }}
