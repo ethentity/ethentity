@@ -17,7 +17,7 @@ const Profile = () => {
 
   async function register(){
     const tx = await Ethentity.register('Danny', 'Chung', 'USA', 'AB123456');
-    const receipt = tx.wait();
+    const receipt = await tx.wait();
     console.log("Receipt:", receipt);
   }
 
