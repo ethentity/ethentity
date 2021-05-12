@@ -5,9 +5,9 @@ const deployVerificationContract = require("./deploy_verificationContract");
 
 async function main() {
     await deployEthentity();
-    // await deployChunk();
-    // await deployMember();
-    // await deployVerificationContract();
+    await deployChunk();
+    await deployMember();
+    await deployVerificationContract();
 }
 
 main()

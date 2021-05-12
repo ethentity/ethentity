@@ -5,6 +5,7 @@ import CanvasDraw from "react-canvas-draw";
 
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
+  const canvasRef = React.useRef();
   const [imgSrc, setImgSrc] = React.useState(null);
   let item;
   let action_button;
@@ -23,7 +24,14 @@ const WebcamCapture = () => {
       <Button
         squared
         onClick={() => {
-          console.log(imgSrc);
+          const saveData = canvasRef.current.getSaveData();
+          console.log(saveData);
+          localStorage.setItem(
+            "savedDrawing",
+            saveData
+          )
+        
+         
         }}
       >
         Confirm chunk #1
@@ -32,14 +40,14 @@ const WebcamCapture = () => {
     item = (
       <center>
         <CanvasDraw
-          // ref={(canvasDraw) => (props.saveableCanvas = canvasDraw)}
+          ref={canvasRef}
           brushColor="#000000"
           canvasWidth="620px"
           canvasHeight="480px"
           imgSrc={imgSrc}
           lazyRadius={0}
           brushRadius={5}
-          saveData={""}
+          saveData={localStorage.getItem("savedDrawing")}
         />
       </center>
     );

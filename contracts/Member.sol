@@ -18,6 +18,7 @@ contract Member {
     bool private verificationStarted = false;
     bool public isVerifier = false;
     VerificationContract private verificationContract;
+    event VerificationContractDeployed(address indexed sender, string firstName, string lastName);
 
     constructor(Ethentity _ethentity, address _memberAddress, string memory _firstName, string memory _lastName, string memory _country, string memory _passportNumber) {
         ethentity = _ethentity;
@@ -63,6 +64,8 @@ contract Member {
         verificationContract = (
             new VerificationContract
         ){value: msg.value}(ethentity, this, Constants.NUM_CHUNKS, Constants.VALIDATORS_PER_CHUNK);
+        // Emit event verification contract deployed to update UI 
+        emit VerificationContractDeployed(msg.sender, _firstName, _lastName);
     }
 
     modifier onlyMember {
