@@ -1,7 +1,8 @@
 import {provider, signer} from "./signer";
 import {ethers} from "ethers";
 
-const address = "0x40dDC75b976B0a799B8373f604c5086eE3Ba98D3";
+const address = "0x40dDC75b976B0a799B8373f604c5086eE3Ba98D3";  // Layer 2
+// const address = "0x263786a390d12832999D0f099d66d547b4FA994D";  // Kovan testnet (layer 1)
 const ABI = [
     {
         "anonymous": false,

@@ -23,6 +23,7 @@ const WebcamCapture = () => {
     action_button = (
       <Button
         squared
+        theme="success"
         onClick={() => {
           const saveData = canvasRef.current.getSaveData();
           console.log(saveData);

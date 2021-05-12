@@ -21,6 +21,9 @@ module.exports = {
       }
     ]
   },
+  paths: {
+    artifacts: "./frontend/src/artifacts",
+  },
   networks: {
     kovan: {
       url: `https://kovan.infura.io/v3/${INFURA_KEY}`,
