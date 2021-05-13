@@ -1,14 +1,17 @@
 import React from "react";
 import Webcam from "react-webcam";
-import { Button } from "shards-react";
+import { Button, func } from "shards-react";
 import CanvasDraw from "react-canvas-draw";
+import Canvas from "./Canvas";
 
 const WebcamCapture = () => {
   const webcamRef = React.useRef(null);
-  const canvasRef = React.useRef();
+
   const [imgSrc, setImgSrc] = React.useState(null);
   let item;
   let action_button;
+  let confirmClicked = false;
+
   const capture = React.useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImgSrc(imageSrc);
@@ -19,20 +22,15 @@ const WebcamCapture = () => {
     setImgSrc(imageSrc);
   }, [setImgSrc]);
 
+
   if (imgSrc) {
     action_button = (
       <Button
         squared
         theme="success"
         onClick={() => {
-          const saveData = canvasRef.current.getSaveData();
-          console.log(saveData);
-          localStorage.setItem(
-            "savedDrawing",
-            saveData
-          )
-        
-         
+          confirmClicked = true;
+
         }}
       >
         Confirm chunk #1
@@ -40,16 +38,12 @@ const WebcamCapture = () => {
     );
     item = (
       <center>
-        <CanvasDraw
-          ref={canvasRef}
-          brushColor="#000000"
-          canvasWidth="620px"
-          canvasHeight="480px"
-          imgSrc={imgSrc}
-          lazyRadius={0}
-          brushRadius={5}
-          saveData={localStorage.getItem("savedDrawing")}
+        <Canvas
+        img={imgSrc}
+        save={confirmClicked}
         />
+
+
       </center>
     );
   } else {
