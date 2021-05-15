@@ -1,6 +1,8 @@
 import React from 'react';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import { Button, func } from "shards-react";
+import ipfsApi from 'ipfs-api';
+import Buffer from 'buffer';
 
 let posX = 0;
 let posY = 0;
@@ -12,7 +14,9 @@ function changePos(x, y){
 
 
 function Canvas(props){
+
        const canvasRef = useRef(null);
+       let [imgData, setImgData] = useState(null);
 
        function initCanvas(){
             let ctx = canvasRef.current.getContext("2d");
@@ -46,11 +50,24 @@ function Canvas(props){
         function save(){
             const img = canvasRef.current.toDataURL("image/png");
             console.log(img);
-            return img;
+            setImgData(img);
         }
 
-        return(
+        async function saveToIpfs(){
+            const ipfs = ipfsApi('localhost', 5001)
+            const buffer = ipfs.types.Buffer(imgData)
+            ipfs.files.add(buffer, (err, result)=>{
+                if(err){
+                    console.log(err)
+                    return
+                }
+                let url = `https://ipfs.io/ipfs/${result[0].hash}`
+                console.log(`Url --> ${url}`)
+            })
+        }
 
+
+        return(
             <div> 
                 <canvas 
                 ref={canvasRef} 
@@ -63,10 +80,8 @@ function Canvas(props){
                 />
                 <Button onClick={save}>Save Image</Button>
                 <Button onClick={initCanvas}>Set Background Image</Button>
-
+                <Button onClick={saveToIpfs}>Save to IFPS</Button>
             </div>
         )
-    
-
 }
 export default Canvas;

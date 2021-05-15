@@ -1,7 +1,6 @@
 import React from "react";
 import Webcam from "react-webcam";
 import { Button, func } from "shards-react";
-import CanvasDraw from "react-canvas-draw";
 import Canvas from "./Canvas";
 
 const WebcamCapture = () => {
@@ -24,6 +23,7 @@ const WebcamCapture = () => {
 
 
   if (imgSrc) {
+
     action_button = (
       <Button
         squared
